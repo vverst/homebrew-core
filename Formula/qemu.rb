@@ -11,6 +11,12 @@ class Qemu < Formula
     sha256 "0ef458cc2c387f8bbb2bdbd0e4d6e2a21574eb735c1621ad8e0cd3e094288298" => :high_sierra
     sha256 "68d05c70584e722c8109682ddc041a6271e0c36d102c7d3f55553ba3b4f39480" => :sierra
   end
+  
+  # Cocoa display hangs on macOS 10.15 (Catalina) https://bugs.launchpad.net/qemu/+bug/1847906
+  patch do
+    url "https://github.com/patchew-project/qemu/commit/4c9c16cdf462d81477c29bf40c3107f5133a3b48.diff?full_index=1"
+    sha256 "2f96df6e29d76b835a408bede7bfa94b22079865cb481f26224d95cc7b37ad10"
+  end
 
   depends_on "libtool" => :build
   depends_on "pkg-config" => :build
